@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: backgroundColor,
       ),
-      home: const LoginScreen(),
+      home: StreamBuilder(builder: (context, snapshot) => const Text("")),
       routes: {
         "/login": (context) => const LoginScreen(),
         "/home-screen": (context) => const HomeScreen(),
