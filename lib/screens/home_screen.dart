@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zoom_clone_flutter/screens/meeting_screen.dart';
 import 'package:zoom_clone_flutter/utils/colors.dart';
 import 'package:zoom_clone_flutter/widgets/custom_text.dart';
 
@@ -17,6 +18,9 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  List<Widget> pages = [
+    const MeetingScreen(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,6 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         centerTitle: true,
       ),
+      body: const MeetingScreen(),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: footerColor,
         selectedItemColor: whiteColor,
@@ -62,12 +67,6 @@ class _HomeScreenState extends State<HomeScreen> {
             label: "Settings",
           ),
         ],
-      ),
-      body: const Center(
-        child: Text(
-          "Home Screen",
-          style: TextStyle(color: Colors.white),
-        ),
       ),
     );
   }
