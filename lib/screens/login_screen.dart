@@ -6,6 +6,7 @@ import 'package:zoom_clone_flutter/widgets/custom_button.dart';
 import 'package:zoom_clone_flutter/widgets/custom_text.dart';
 
 class LoginScreen extends StatefulWidget {
+  static const route = "/login";
   const LoginScreen({Key? key}) : super(key: key);
 
   @override

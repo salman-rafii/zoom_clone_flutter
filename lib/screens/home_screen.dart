@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:zoom_clone_flutter/screens/history_meeting_screen.dart';
 import 'package:zoom_clone_flutter/screens/meeting_screen.dart';
 import 'package:zoom_clone_flutter/utils/colors.dart';
-import 'package:zoom_clone_flutter/widgets/custom_text.dart';
+import 'package:zoom_clone_flutter/widgets/reusable_widgets.dart';
 
 class HomeScreen extends StatefulWidget {
+  static const route = "/home-screen";
   const HomeScreen({super.key});
 
   @override
@@ -20,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   List<Widget> pages = [
-    const MeetingScreen(),
+    MeetingScreen(),
     const HistoryMeetingScreen(),
     const Center(
       child: Text("Contacts"),
@@ -32,15 +33,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: backgroundColor,
-        elevation: 0,
-        title: const CustomText(
-          text: "Meet & Chat",
-        ),
-        centerTitle: true,
-      ),
-      body: const MeetingScreen(),
+      appBar: ReusableWidgets.myAppBar(title: "Meet & Chat"),
+      body: pages[_page],
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: footerColor,
         selectedItemColor: whiteColor,
