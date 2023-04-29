@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zoom_clone_flutter/screens/history_meeting_screen.dart';
 import 'package:zoom_clone_flutter/screens/meeting_screen.dart';
 import 'package:zoom_clone_flutter/utils/colors.dart';
 import 'package:zoom_clone_flutter/widgets/custom_text.dart';
@@ -20,6 +21,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<Widget> pages = [
     const MeetingScreen(),
+    const HistoryMeetingScreen(),
+    const Center(
+      child: Text("Contacts"),
+    ),
+    const Center(
+      child: Text("Settings"),
+    ),
   ];
   @override
   Widget build(BuildContext context) {
