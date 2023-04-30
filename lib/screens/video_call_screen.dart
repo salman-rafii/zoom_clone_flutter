@@ -26,6 +26,13 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
     super.initState();
   }
 
+  @override
+  void dispose() {
+    meetingIdController.dispose();
+    nameController.dispose();
+    super.dispose();
+  }
+
   _joinMeeting() {}
   @override
   Widget build(BuildContext context) {
