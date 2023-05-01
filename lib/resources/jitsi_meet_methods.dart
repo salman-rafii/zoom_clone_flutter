@@ -7,15 +7,22 @@ class JitsiMeetMethods {
     required String roomName,
     required bool isAudioMuted,
     required bool isVideoMuted,
+    String username = '',
   }) async {
     try {
+      String name;
       // Define meetings options here
+      if (username.isEmpty) {
+        name = _authMethods.user.displayName!;
+      } else {
+        name = username;
+      }
       var options = JitsiMeetingOptions(
         userAvatarUrl: _authMethods.user.photoURL,
         roomNameOrUrl: roomName,
         isAudioMuted: isAudioMuted,
         isVideoMuted: isVideoMuted,
-        userDisplayName: _authMethods.user.displayName,
+        userDisplayName: name,
         userEmail: _authMethods.user.email,
       );
       await JitsiMeetWrapper.joinMeeting(
