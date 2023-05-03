@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jitsi_meet_wrapper/jitsi_meet_wrapper.dart';
 import 'package:zoom_clone_flutter/resources/auth_methods.dart';
 import 'package:zoom_clone_flutter/resources/jitsi_meet_methods.dart';
 import 'package:zoom_clone_flutter/utils/colors.dart';
@@ -38,6 +37,7 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
     super.dispose();
   }
 
+// function to join meeting
   _joinMeeting() {
     _jitsiMeetMethods.createMeeting(
       roomName: meetingIdController.text,
