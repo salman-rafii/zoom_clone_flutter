@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:jitsi_meet_wrapper/jitsi_meet_wrapper.dart';
 import 'package:zoom_clone_flutter/resources/auth_methods.dart';
 import 'package:zoom_clone_flutter/resources/firestore_methods.dart';
@@ -38,6 +40,8 @@ class JitsiMeetMethods {
               print("onConferenceTerminated: url: $url, error: $error"),
         ),
       );
-    } catch (e) {}
+    } catch (e) {
+      print(e);
+    }
   }
 }
