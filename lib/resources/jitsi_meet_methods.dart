@@ -1,8 +1,10 @@
 import 'package:jitsi_meet_wrapper/jitsi_meet_wrapper.dart';
 import 'package:zoom_clone_flutter/resources/auth_methods.dart';
+import 'package:zoom_clone_flutter/resources/firestore_methods.dart';
 
 class JitsiMeetMethods {
   final AuthMethods _authMethods = AuthMethods();
+  final FirestoreMethods _firestoreMethods = FirestoreMethods();
   void createMeeting({
     required String roomName,
     required bool isAudioMuted,
@@ -25,6 +27,7 @@ class JitsiMeetMethods {
         userDisplayName: name,
         userEmail: _authMethods.user.email,
       );
+      _firestoreMethods.addToMeetingHistory(roomName);
       await JitsiMeetWrapper.joinMeeting(
         options: options,
         listener: JitsiMeetingListener(

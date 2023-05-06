@@ -1,15 +1,13 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:zoom_clone_flutter/resources/firebase_collections.dart';
+import 'package:zoom_clone_flutter/resources/firebase_methods.dart';
 import 'package:zoom_clone_flutter/utils/utils.dart';
 
 class AuthMethods {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-
-  Stream<User?> get authChanges => _auth.authStateChanges();
-  User get user => _auth.currentUser!;
+  Stream<User?> get authChanges => firebaseAuth.authStateChanges();
+  User get user => firebaseAuth.currentUser!;
 
   Future<bool> signInWithGoogle(BuildContext context) async {
     bool res = false;
@@ -23,13 +21,16 @@ class AuthMethods {
       );
 
       UserCredential userCredential =
-          await _auth.signInWithCredential(credential);
+          await firebaseAuth.signInWithCredential(credential);
 
       User? user = userCredential.user;
 
       if (user != null) {
         if (userCredential.additionalUserInfo!.isNewUser) {
-          await _firestore.collection('users').doc(user.uid).set({
+          await firestore
+              .collection(FirebaseConstants.usersCollection)
+              .doc(user.uid)
+              .set({
             'username': user.displayName,
             'uid': user.uid,
             'profilePhoto': user.photoURL,
